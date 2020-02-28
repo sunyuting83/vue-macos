@@ -52,6 +52,9 @@ html {
   height: 100%;
   width: 100%
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 input::-ms-clear {
   display: none
@@ -78,7 +81,7 @@ input[type=search] {
   width: 100%;
   height: 100%;
   background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826186423&di=1c438a7ee90e111a5b7d267af1716867&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-ed718e97754e6fc0a72fea2c94069a1f_1200x500.jpg');
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

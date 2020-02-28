@@ -86,12 +86,12 @@ export default {
   left: 10%;
   width: 79%;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 6px 6px 0 0;
+  border-radius: 0.375rem 0.375rem 0 0;
 }
 #container ul {
   padding: 0;
   margin-top: 0;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0;
 }
 #container li {
   list-style-type: none;
@@ -103,14 +103,14 @@ export default {
 }
 
 #container li img {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   transition: all 0.3s;
   transform-origin: 40% 70%;
 }
 
 #container li:hover img {
-  transform: scale(2);
+  transform: scale(2) translateY(-0.3125rem);
   margin: 0 2em;
 }
 
@@ -123,12 +123,12 @@ export default {
 #container li span {
   display: none;
   position: absolute;
-  bottom: 100px;
+  bottom: 110px;
   left: 0;
   width: 100%;
   background-color: #222;
-  padding: 4px 0;
-  border-radius: 7px;
+  padding: 0.25rem 0;
+  border-radius: 0.4375rem;
 }
 
 #container li:hover span {

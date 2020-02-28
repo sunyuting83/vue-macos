@@ -25,6 +25,7 @@
 </template>
 
 <script>
+const date = new Date()
 export default {
   name: 'DateTime',
   props: ['shCalender'],
@@ -32,9 +33,9 @@ export default {
     return {
       timenow: '',
       datenow: '',
-      year: 0,
-      month: 0,
-      day: 0,
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
       monthList: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       weekDay: 1,
       lastWeekDay: 1,
@@ -51,7 +52,6 @@ export default {
     }
   },
   created(){
-    this.getCurrentDate()
     this.refreshTime()
   },
   methods: {
@@ -79,12 +79,6 @@ export default {
     },
     neverShow() {
       this.shcalender = true
-    },
-    getCurrentDate() {
-      const date = new Date()
-      this.year = date.getFullYear()
-      this.month = date.getMonth() + 1
-      this.day = date.getDate()
     },
     // 根据年月日获得为星期几
     getWeekDay(year, month, day) {
