@@ -2,7 +2,7 @@
   <div id="container">
     <div id="dock">
       <ul>
-        <li v-for="(item,index) in list" :key="index">
+        <li v-for="(item,index) in list" :class="{'prev':item.active}" :key="index" @mouseover="change(index)" @mouseout="changed">
           <span>{{item.title}}</span>
           <img :src="item.icon" />
         </li>
@@ -12,59 +12,88 @@
 </template>
 
 <script>
-const menu = [
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/1.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/2.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/3.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/4.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/5.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/6.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/7.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/8.png',
-    fun: 'openFile'
-  },
-  {
-    title: '文件',
-    icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/9.png',
-    fun: 'openFile'
-  }
-]
 export default {
   name: 'Dock',
   props: ['msg'],
   data() {
     return {
-      list: menu
+      list:  [
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/1.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/2.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/3.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/4.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/5.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/6.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/7.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/8.png',
+          fun: 'openFile',
+          active: false
+        },
+        {
+          title: '文件',
+          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/9.png',
+          fun: 'openFile',
+          active: false
+        }
+      ]
+    }
+  },
+  methods:{
+    change(i) {
+      let list = this.list,
+          newi = i - 1
+      this.list = list.map((element,x) =>{
+        if(i !==0 ) {
+          if(x == newi) {
+            element.active = true
+          }
+        }
+        return element
+      })
+    },
+    changed(){
+      let list = this.list
+      this.list = list.map(element =>{
+        element.active = false
+        return element
+      })
     }
   }
 }
