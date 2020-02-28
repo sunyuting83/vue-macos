@@ -1,0 +1,92 @@
+@import url('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css');
+html {
+  overflow-y: scroll
+}
+
+body {
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  font: .6rem/1.5 Microsoft Yahei, sans-serif;
+  text-align: center;
+  text-size-adjust: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  min-width: 800px;
+  min-height: 500px;
+  user-select: none;
+}
+
+div {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+input {
+  font-family: Microsoft Yahei, sans-serif
+}
+
+b,
+cite,
+em,
+font,
+i,
+strong,
+sub,
+sup {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100%
+}
+
+.clearfix {
+  zoom: 1
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%
+}
+
+input::-ms-clear {
+  display: none
+}
+
+button,
+input[type=submit],
+input[type=reset],
+input[type=button],
+input[type=search] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.h1,
+.h3,
+.h5 {
+  font-weight: inherit;
+}
+#app {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826186423&di=1c438a7ee90e111a5b7d267af1716867&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-ed718e97754e6fc0a72fea2c94069a1f_1200x500.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-width: 800px;
+  min-height: 500px;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}

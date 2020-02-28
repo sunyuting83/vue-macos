@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="main" @click="closeCalender">
+      <TopBar :sh-calender="shcalender" />
+      <Dock />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TopBar from '@/components/TopBar/TopBar.vue'
+import Dock from '@/components/Dock.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TopBar,
+    Dock
+  },
+  data(){
+    return {
+      shcalender: false
+    }
+  },
+  methods: {
+    closeCalender(){
+      this.shcalender = !this.shcalender
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
