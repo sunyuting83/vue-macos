@@ -1,6 +1,7 @@
 <template>
   <div id="container">
     <div id="dock">
+      <div id="dockbackground"></div>
       <ul>
         <li v-for="(item,index) in list" :class="{'prev':item.active}" :key="index" @mouseover="change(index)" @mouseout="changed">
           <span>{{item.title}}</span>
@@ -102,24 +103,41 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #container #dock{
-	width: 100%;
-	text-align: center;
+  display: inline-block;
+	width: auto;
+  text-align: center;
+  position: relative;
   margin: 0 auto;
-  font-size: 1rem
+  font-size: 1rem;
+  box-sizing: border-box;
+  padding:0 1.25rem
+}
+#container #dock #dockbackground {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:url('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2066120883,1034796895&fm=26&gp=0.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  border-radius: 0.275rem 0.275rem 0 0;
+  z-index: -1;
+  opacity: .6;
 }
 #container {
   position: fixed;
   bottom: 0;
   text-align: center;
-  right: 20%;
-  left: 10%;
-  width: 79%;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 0.375rem 0.375rem 0 0;
+  right: 0%;
+  left: 0%;
+  width: 100%;
 }
 #container ul {
   padding: 0;
-  margin-top: 0;
+  margin-top: 3px;
   margin-bottom: 0;
 }
 #container li {
@@ -139,8 +157,8 @@ export default {
 }
 
 #container li:hover img {
-  transform: scale(2) translateY(-0.3125rem);
-  margin: 0 2em;
+  transform: scale(1.8) translateY(-0.3125rem);
+  margin: 0 1rem;
 }
 
 #container li:hover+li img,

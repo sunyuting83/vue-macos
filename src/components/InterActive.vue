@@ -6,12 +6,13 @@
     v-for="(site, index) in list" 
     :key="index"
     :style="[{'top':index*40+40 + 'px'},{'left':index*40+40 + 'px'}]"
+    @click="setActive(index)"
     >
     <div 
       class="draggable" 
       :class="{'active':site.active?true:false}" 
       @mousedown="move($event, index)"
-      @click="setActive(index)">
+      >
       <div class="dragFun">
         <div class="dragClose" @click.stop="funClose(index)">
           <span>
@@ -119,7 +120,7 @@ export default {
   cursor: move;
   display: flex;
   flex-direction: row;
-  justify-content:start;
+  justify-content:flex-start;
   align-items: center;
 }
 .interactive > .draggable .dragFun {
