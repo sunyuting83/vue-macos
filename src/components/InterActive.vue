@@ -32,16 +32,19 @@
       </div>
       <div class="other"></div>
     </div>
-    <div class="content">{{site.name}}</div>
+    <div class="content">
+      <Markedown />
+    </div>
   </div>
 </div>
 </template>
 <script>
+import Markedown from './Markedown';
 export default {
   name: 'InterActive',
   props: ['newActive'],
   components: {
-    
+    Markedown
   },
   data(){
     return {
@@ -85,7 +88,7 @@ export default {
     },
     funClose(i){
       let list = this.list
-      this.list = list.filter((x,a)=> i!== a)
+      this.list = list.filter((x,a)=> i !== a)
     }
   },
   watch: {
@@ -98,8 +101,8 @@ export default {
 <style scoped>
 .interactive {
   position: absolute;
-  width: 350px;
-  height: 35px;
+  width: 650px;
+  height: 305px;
   background: #FFF;
 }
 .interactive > .content {
@@ -108,7 +111,7 @@ export default {
   left: 0;
   padding-top: 35px;
   width: 100%;
-  height: auto;
+  height: 100%;
   margin:0 auto;
   padding: 10px;
   background:#fff;

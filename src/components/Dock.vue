@@ -26,8 +26,14 @@ export default {
           active: false
         },
         {
-          title: '文件',
-          icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/2.png',
+          title: 'Markdown',
+          icon: 'https://s2.ax1x.com/2020/03/01/32CASK.png',
+          fun: 'openMarkdown',
+          active: false
+        },
+        {
+          title: 'Safari',
+          icon: 'https://s2.ax1x.com/2020/03/01/32iUGq.png',
           fun: 'openFile',
           active: false
         },
@@ -118,7 +124,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background:url('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2066120883,1034796895&fm=26&gp=0.jpg');
+  background:url('https://s2.ax1x.com/2020/03/01/3c1Iyj.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

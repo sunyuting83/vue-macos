@@ -1,5 +1,8 @@
 # macos
 
+## 依赖
+* marked https://github.com/markedjs/marked
+
 ## Project setup
 ```
 yarn install

@@ -2,7 +2,9 @@
 html {
   overflow-y: scroll
 }
-
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 body {
   margin: 0 auto;
   background-color: #f1f1f1;
@@ -80,7 +82,7 @@ input[type=search] {
   flex: 1;
   width: 100%;
   height: 100%;
-  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826186423&di=1c438a7ee90e111a5b7d267af1716867&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-ed718e97754e6fc0a72fea2c94069a1f_1200x500.jpg');
+  background-image: url('https://s2.ax1x.com/2020/03/01/3c1XfU.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -92,4 +94,150 @@ input[type=search] {
 .main {
   width: 100%;
   height: 100%;
+}
+
+.editor {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+.editor .code,
+.editor .result {
+  width: 50%;
+  padding: 1rem;
+}
+.editor .code {
+  resize: none;
+  border: none;
+  font-family: "Source Code Pro", monospace;
+  background: rgba(0, 0, 0, 0.8);
+  outline: none;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+.editor .result {
+  background: #fff;
+  text-align: left;
+  overflow-y: auto;
+}
+.result h1,
+.result h2,
+.result h3,
+.result h4,
+.result h5,
+.editor .result h6 {
+  margin-top: 0;
+}
+.editor .result hr {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.editor .result img {
+  max-width: 100%;
+  height: auto;
+}
+.editor .result ul, .editor .result ol {
+  margin-left: 0;
+  padding-left: 20px;
+}
+.editor .result ul li, .editor .result ol li {
+  margin-left: 0;
+}
+.editor .result pre {
+  padding: 10px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.editor .code::-webkit-scrollbar,
+.editor .result::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 5px;
+  height: 5px;
+}
+.editor .code::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+  background-color: rgba(255,255,255,.3);
+}
+.editor .result::-webkit-scrollbar-thumb {
+/*滚动条里面小方块*/
+  border-radius: 1em;
+  background-color: rgba(50,50,50,.3);
+}
+.editor .code::-webkit-scrollbar-track {
+  border-radius: 1em;
+  background-color: rgba(255,255,255,.3);
+}
+.editor .result::-webkit-scrollbar-track {
+/*滚动条里面轨道*/
+  border-radius: 1em;
+  background-color: rgba(50,50,50,.1);
+}
+
+@-webkit-keyframes blink {
+  from {
+    color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px 7px rgba(255, 255, 0, 0.2);
+  }
+  to {
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px 7px rgba(255, 255, 0, 0.8);
+  }
+}
+
+@keyframes blink {
+  from {
+    color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px 7px rgba(255, 255, 0, 0.2);
+  }
+  to {
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px 7px rgba(255, 255, 0, 0.8);
+  }
+}
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
 }
