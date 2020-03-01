@@ -2,7 +2,7 @@
   <div id="app">
     <div class="main" @click="closeCalender">
       <TopBar :sh-calender="shcalender" />
-      <Dock />
+      <Dock :open-fun="openFun" />
       <InterActive />
     </div>
   </div>
@@ -12,6 +12,7 @@
 import TopBar from '@/components/TopBar/TopBar.vue'
 import Dock from '@/components/Dock.vue'
 import InterActive from '@/components/InterActive'
+import Config from '@/assets/config.json'
 
 export default {
   name: 'App',
@@ -24,12 +25,24 @@ export default {
   },
   data(){
     return {
-      shcalender: false
+      shcalender: false,
+      topbar: {},
+      interactive: {}
     }
   },
   methods: {
     closeCalender(){
       this.shcalender = !this.shcalender
+    },
+    openFun(name = ""){
+      switch(name) {
+        case 'markdown':
+          this.topbar = Config.topbar.markdown
+          this.interactive = Config.interActive.markdown
+          break;
+        default:
+          break;
+      }
     }
   }
 }

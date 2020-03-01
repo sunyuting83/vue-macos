@@ -3,7 +3,13 @@
     <div id="dock">
       <div id="dockbackground"></div>
       <ul>
-        <li v-for="(item,index) in list" :class="{'prev':item.active}" :key="index" @mouseover="change(index)" @mouseout="changed">
+        <li
+          v-for="(item,index) in list" 
+          :class="{'prev':item.prev}" 
+          :key="index" 
+          @mouseover="change(index)" 
+          @mouseout="changed"
+          @click.stop="openFun(item.fun),active(index)">
           <span>{{item.title}}</span>
           <img :src="item.icon" />
         </li>
@@ -15,7 +21,7 @@
 <script>
 export default {
   name: 'Dock',
-  props: ['msg'],
+  props: ['openFun'],
   data() {
     return {
       list:  [
@@ -23,60 +29,70 @@ export default {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/1.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: 'Markdown',
           icon: 'https://s2.ax1x.com/2020/03/01/32CASK.png',
-          fun: 'openMarkdown',
+          fun: 'markdown',
+          prev: false,
           active: false
         },
         {
           title: 'Safari',
           icon: 'https://s2.ax1x.com/2020/03/01/32iUGq.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/3.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/4.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/5.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/6.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/7.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/8.png',
           fun: 'openFile',
+          prev: false,
           active: false
         },
         {
           title: '文件',
           icon: 'https://www.17sucai.com/preview/847335/2018-01-30/dock/images/9.png',
           fun: 'openFile',
+          prev: false,
           active: false
         }
       ]
@@ -89,7 +105,7 @@ export default {
       this.list = list.map((element,x) =>{
         if(i !==0 ) {
           if(x == newi) {
-            element.active = true
+            element.prev = true
           }
         }
         return element
@@ -98,9 +114,12 @@ export default {
     changed(){
       let list = this.list
       this.list = list.map(element =>{
-        element.active = false
+        element.prev = false
         return element
       })
+    },
+    active(i) {
+      this.list[i].active = true
     }
   }
 }

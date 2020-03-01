@@ -1,0 +1,62 @@
+{
+  "topbar": {
+    "markdown": {
+      "name": "markdown",
+      "toolbar": [
+        {
+          "title": "文件",
+          "child": [
+            {
+              "title":"保存",
+              "child": [],
+              "fun": "markdown-save",
+              "param": ""
+            },
+            {
+              "title":"关闭",
+              "child": [],
+              "fun": "markdown-close",
+              "param": ""
+            }
+          ],
+          "fun": ""
+        },
+        {
+          "title":"皮肤",
+          "child": [
+            {
+              "title":"绿色",
+              "child": [],
+              "fun": "markdown-setSkin",
+              "param": "green"
+            },
+            {
+              "title":"红色",
+              "child": [],
+              "fun": "markdown-setSkin",
+              "param": "blue"
+            }
+          ],
+          "fun": ""
+        }
+      ]
+    }
+  },
+  "interActive" : {
+    "markdown": {
+      "option": {
+        "name":"markdown",
+        "active":false,
+        "width": 580,
+        "height": 460,
+        "z-index": 999
+      }
+    }
+  },
+  "dock": {
+    "markdown": {
+      "active": true,
+      "fun": "openFun"
+    }
+  }
+}

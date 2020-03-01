@@ -14,7 +14,7 @@
       @mousedown="move($event, index)"
       >
       <div class="dragFun">
-        <div class="dragClose" @click.stop="funClose(index)">
+        <div class="dragClose" @click.stop="funClose(site.name)">
           <span>
             <i class="fa fa-times"></i>
           </span>
@@ -48,7 +48,7 @@ export default {
   },
   data(){
     return {
-      list: [{name:'拖动我',active:false},{name:'拖动我',active:false},{name:'拖动我',active:false}]
+      list: [{name:'拖动我1',active:false},{name:'拖动我2',active:false},{name:'拖动我3',active:false}]
     }
   },
   methods: {
@@ -86,9 +86,15 @@ export default {
           return element
       })
     },
-    funClose(i){
+    funClose(name){
       let list = this.list
-      this.list = list.filter((x,a)=> i !== a)
+      this.list = list.filter((s)=>{
+            if(s.name == name){
+              return false;
+            }else{
+              return s;
+            }
+        })
     }
   },
   watch: {
