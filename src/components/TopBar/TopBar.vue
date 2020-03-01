@@ -6,6 +6,8 @@
     </div>
     <div class="bar-item">
       <div><i class="fa fa-wifi"></i></div>
+      <div><i class="fa fa-bluetooth"></i></div>
+      <div><i class="fa fa-battery-4"></i></div>
       <DataTime :sh-calender="shCalender" />
       <div><i class="fa fa-file-text-o"></i></div>
       <div><i class="fa fa-search"></i></div>
