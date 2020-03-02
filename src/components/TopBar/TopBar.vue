@@ -35,7 +35,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .topbar {
-  height: 35px;
+  height: 30px;
   background:rgba(274,274,274,.85);
   display: flex;
   position: fixed;
@@ -55,7 +55,7 @@ export default {
   box-shadow: 0px 5px 15px rgba(0,0,0,0.3)
 }
 .apple {
-  font-size: 1.3rem
+  font-size: 1.1rem
 }
 .bar-item {
   display: flex;

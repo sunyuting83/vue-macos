@@ -1,7 +1,9 @@
 # macos
 
 ## 依赖
+* VUE
 * marked https://github.com/markedjs/marked
+* Animate.css
 
 ## Project setup
 ```

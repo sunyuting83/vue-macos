@@ -5,13 +5,14 @@
       <ul>
         <li
           v-for="(item,index) in list" 
-          :class="{'prev':item.prev}" 
+          :class="[{'prev':item.prev},{'animated bounce':item.active}]" 
           :key="index" 
           @mouseover="change(index)" 
           @mouseout="changed"
           @click.stop="openFun(item.fun),active(index)">
           <span>{{item.title}}</span>
           <img :src="item.icon" />
+          <i v-if="item.active"></i>
         </li>
       </ul>
     </div>
@@ -159,6 +160,7 @@ export default {
   right: 0%;
   left: 0%;
   width: 100%;
+  z-index: 999999;
 }
 #container ul {
   padding: 0;
@@ -179,6 +181,13 @@ export default {
   height: 3.125rem;
   transition: all 0.3s;
   transform-origin: 40% 70%;
+}
+#container li i{
+    width: 12%;
+    height: 3px;
+    background: #333;
+    display: block;
+    margin: 0 auto;
 }
 
 #container li:hover img {

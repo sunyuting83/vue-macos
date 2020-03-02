@@ -5,12 +5,20 @@
     :v-if="list.length > 0"
     v-for="(site, index) in list" 
     :key="index"
-    :style="[{'top':index*40+40 + 'px'},{'left':index*40+40 + 'px'}]"
+    :style="[
+      {'top':site.top + 'px'},
+      {'left':site.left + 'px'},
+      {'width':site.width + 'px'},
+      {'height':site.height + 'px'},
+      {'opacity': site.opacity},
+      {'z-index': site.zIndex}
+    ]"
     @click="setActive(index)"
     >
     <div 
       class="draggable" 
       :class="{'active':site.active?true:false}" 
+      @dblclick.stop="funFull(index)"
       @mousedown="move($event, index)"
       >
       <div class="dragFun">
@@ -24,13 +32,13 @@
             <i class="fa fa-minus"></i>
           </span>
         </div>
-        <div class="dragMax">
+        <div class="dragMax" @click.stop="funFull(index)">
           <span>
             <i class="fa fa-plus"></i>
           </span>
         </div>
       </div>
-      <div class="other"></div>
+      <div class="other">{{site.name}}</div>
     </div>
     <div class="content">
       <Markedown />
@@ -48,53 +56,93 @@ export default {
   },
   data(){
     return {
-      list: [{name:'拖动我1',active:false},{name:'拖动我2',active:false},{name:'拖动我3',active:false}]
+      list: [
+        {name:'拖动我1',active:false,top:40,left:40,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:40,oldleft:40},
+        {name:'拖动我2',active:false,top:80,left:80,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:80,oldleft:80},
+        {name:'拖动我3',active:false,top:120,left:120,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:120,oldleft:120}]
     }
   },
   methods: {
     move(e, i){
       this.setActive(i)
+      let _this = this
+      let windowW = document.body.clientWidth //浏览器宽度
+      let windowH = document.body.clientHeight //浏览器高度
       // let odiv = e.target        //获取目标元素
-      let id = e.currentTarget.parentElement
+      let id = e.currentTarget.parentElement //获取父元素
       //算出鼠标相对元素的位置
       let disX = e.clientX - id.offsetLeft
       let disY = e.clientY - id.offsetTop
+      let disW = id.offsetWidth //窗口宽度
+      let maxW = windowW - disW
+      let maxH = windowH - 150
       document.onmousemove = (e)=>{       //鼠标按下并移动的事件
-          //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-          let left = e.clientX - disX  
-          let top = (e.clientY - 1) - disY
-          
-          //移动当前元素
-          id.style.left = left + 'px'
-          id.style.top = top + 'px'
-          id.style.opacity = 0.85
+        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+        let left = e.clientX - disX  
+        let top = (e.clientY - 1) - disY
+
+        if (top <= 30) top = 30 //不容许超过topbar
+        if (top >= maxH) top = maxH
+        if (left <= 0) left = 0 //不容许超过左边界
+        if(left >= maxW) left = maxW
+        
+        //移动当前元素
+        _this.list[i].left = left
+        _this.list[i].oldleft = left
+        _this.list[i].top = top
+        _this.list[i].oldtop = top
+        _this.list[i].opacity = 0.85
+        // id.style.left = left + 'px'
+        // id.style.top = top + 'px'
+        // id.style.opacity = 0.85
       }
       document.onmouseup = () => {
-          document.onmousemove = null
-          document.onmouseup = null
-          id.style.opacity = 1
+        document.onmousemove = null
+        document.onmouseup = null
+        _this.list[i].opacity = 1
       }
     },
     setActive(i) {
       let list = this.list
       this.list = list.map((element,x) =>{
-          if(x == i) {
-            element.active = true
-          }else {
-            element.active = false
-          }
-          return element
+        if(x == i) {
+          element.active = true
+          element.zIndex = 999
+        }else {
+          element.active = false
+          element.zIndex = 'inherit'
+        }
+        return element
       })
     },
     funClose(name){
       let list = this.list
       this.list = list.filter((s)=>{
-            if(s.name == name){
-              return false;
-            }else{
-              return s;
-            }
-        })
+        if(s.name === name){
+          return false;
+        }else{
+          return s;
+        }
+      })
+    },
+    funFull(i) {
+      const full = this.list[i].full
+      const _this = this.list[i]
+      if(full) {
+        _this.width = _this.oldwidth
+        _this.height = _this.oldheight
+        _this.top = _this.oldtop
+        _this.left = _this.oldleft
+        _this.full = false
+      }else{
+        let windowW = document.body.clientWidth //浏览器宽度
+        let windowH = document.body.clientHeight //浏览器高度
+        this.list[i].width = windowW
+        this.list[i].height = windowH - 90
+        _this.full = true
+        _this.top = 30
+        _this.left = 0
+      }
     }
   },
   watch: {
@@ -107,9 +155,10 @@ export default {
 <style scoped>
 .interactive {
   position: absolute;
-  width: 650px;
-  height: 305px;
   background: #FFF;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  overflow: hidden;
 }
 .interactive > .content {
   position: absolute;
@@ -117,7 +166,7 @@ export default {
   left: 0;
   padding-top: 35px;
   width: 100%;
-  height: 100%;
+  bottom: 0;
   margin:0 auto;
   padding: 10px;
   background:#fff;
