@@ -39,7 +39,7 @@ export default {
       switch(name) {
         case 'markdown':
           this.topbar = Config.topbar.markdown
-          this.interactive = Config.interActive.markdown.option
+          this.interactive = Config.interActive.markdown
           break;
         default:
           break;

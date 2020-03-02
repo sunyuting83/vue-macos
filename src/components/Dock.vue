@@ -194,11 +194,14 @@ export default {
   transform-origin: 40% 70%;
 }
 #container li i{
-    width: 12%;
-    height: 3px;
-    background: #333;
-    display: block;
-    margin: 0 auto;
+  width: 12%;
+  height: 3px;
+  background: #333;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0px;
+  left: 45%;
 }
 
 #container li:hover img {

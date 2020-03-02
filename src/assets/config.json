@@ -44,21 +44,19 @@
   },
   "interActive" : {
     "markdown": {
-      "option": {
-        "name":"markdown",
-        "active":false,
-        "top": 40,
-        "left": 40,
-        "opacity": 1,
-        "zIndex": 999,
-        "width":650,
-        "height":480,
-        "oldwidth":650,
-        "oldheight":480,
-        "full":false,
-        "oldtop":40,
-        "oldleft":40
-      }
+      "name":"markdown",
+      "active":false,
+      "top": 40,
+      "left": 40,
+      "opacity": 1,
+      "zIndex": 999,
+      "width":650,
+      "height":480,
+      "oldwidth":650,
+      "oldheight":480,
+      "full":false,
+      "oldtop":40,
+      "oldleft":40
     }
   },
   "dock": {
