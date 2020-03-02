@@ -47,12 +47,17 @@
       "option": {
         "name":"markdown",
         "active":false,
-        "width": 580,
-        "height": 460,
-        "top": 0,
-        "left": 0,
+        "top": 40,
+        "left": 40,
         "opacity": 1,
-        "z-index": 99999
+        "zIndex": 999,
+        "width":650,
+        "height":480,
+        "oldwidth":650,
+        "oldheight":480,
+        "full":false,
+        "oldtop":40,
+        "oldleft":40
       }
     }
   },

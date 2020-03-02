@@ -2,8 +2,8 @@
   <div id="app">
     <div class="main" @click="closeCalender">
       <TopBar :sh-calender="shcalender" />
-      <Dock :open-fun="openFun" />
-      <InterActive />
+      <Dock :open-fun="openFun" :close-active="closeActive" />
+      <InterActive :v-if="interactive.name" :new-active="interactive" :close-fun="closeFun" />
     </div>
   </div>
 </template>
@@ -27,7 +27,8 @@ export default {
     return {
       shcalender: false,
       topbar: {},
-      interactive: {}
+      interactive: {},
+      closeActive: ''
     }
   },
   methods: {
@@ -38,11 +39,26 @@ export default {
       switch(name) {
         case 'markdown':
           this.topbar = Config.topbar.markdown
-          this.interactive = Config.interActive.markdown
+          this.interactive = Config.interActive.markdown.option
           break;
         default:
           break;
       }
+      this.closeActive = ""
+    },
+    closeFun(name = ""){
+      const _this = this
+      setTimeout(()=> {
+        switch(name) {
+          case 'markdown':
+            _this.topbar = {}
+            _this.interactive = {}
+            break;
+          default:
+            break;
+        }
+        _this.closeActive = name
+      },10)
     }
   }
 }

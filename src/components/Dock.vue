@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'Dock',
-  props: ['openFun'],
+  props: ['openFun','closeActive'],
   data() {
     return {
       list:  [
@@ -121,6 +121,17 @@ export default {
     },
     active(i) {
       this.list[i].active = true
+    }
+  },
+  watch: {
+    closeActive(val) {
+      console.log(val)
+      this.list = this.list.map((x) => {
+        if(x.fun == val) {
+          x.active = false
+        }
+        return x
+      })
     }
   }
 }

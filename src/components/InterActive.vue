@@ -1,9 +1,9 @@
 <template>
 <div>
   <div 
-    class="interactive" 
-    :v-if="list.length > 0"
+    class="interactive animated bounceIn" 
     v-for="(site, index) in list" 
+    :v-if="list.length > 0 || site.name"
     :key="index"
     :style="[
       {'top':site.top + 'px'},
@@ -22,7 +22,7 @@
       @mousedown="move($event, index)"
       >
       <div class="dragFun">
-        <div class="dragClose" @click.stop="funClose(site.name)">
+        <div class="dragClose" @click.stop="funClose(site.name),closeFun(site.name)">
           <span>
             <i class="fa fa-times"></i>
           </span>
@@ -41,7 +41,7 @@
       <div class="other">{{site.name}}</div>
     </div>
     <div class="content">
-      <Markedown />
+      <Markedown v-if="activeName !== '' && activeName == 'markdown'" />
     </div>
   </div>
 </div>
@@ -50,16 +50,14 @@
 import Markedown from './Markedown';
 export default {
   name: 'InterActive',
-  props: ['newActive'],
+  props: ['newActive', 'closeFun'],
   components: {
     Markedown
   },
   data(){
     return {
-      list: [
-        {name:'拖动我1',active:false,top:40,left:40,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:40,oldleft:40},
-        {name:'拖动我2',active:false,top:80,left:80,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:80,oldleft:80},
-        {name:'拖动我3',active:false,top:120,left:120,opacity:1,zIndex: 999,width:650,height:380,oldwidth:650,oldheight:380,full:false,oldtop:120,oldleft:120}]
+      list: [],
+      activeName: ''
     }
   },
   methods: {
@@ -143,11 +141,18 @@ export default {
         _this.top = 30
         _this.left = 0
       }
+    },
+    checkObject(obj) {
+      if (Object.keys(obj).length === 0) {
+        return false
+      }
+      return true
     }
   },
   watch: {
     newActive(val) {
-      this.list = this.list.concat(val)
+      this.activeName = val.name
+      if(this.checkObject(val)) this.list = this.list.concat(val)
     }
   }
 }
