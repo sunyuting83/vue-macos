@@ -2,8 +2,10 @@
 
 ## 依赖
 * VUE
-* marked https://github.com/markedjs/marked
+* [marked](https://github.com/markedjs/marked)
 * Animate.css
+* [mini-player](https://github.com/muhammederdem/mini-player)
+* [vue-html5-editor](https://github.com/PeakTai/vue-html5-editor)
 
 ## Project setup
 ```
