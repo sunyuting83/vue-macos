@@ -57,7 +57,16 @@ export default {
   },
   computed: {
     compiledOutput(){
-      return marked(this.code, {sanitize: true})
+      return marked(this.code,
+        {
+          pedantic: false,
+          gfm: true,
+          breaks: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+          xhtml: false
+        })
     }  
   },
   methods: {

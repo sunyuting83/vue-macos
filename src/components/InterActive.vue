@@ -1,7 +1,7 @@
 <template>
 <div>
-  <div 
-    class="interactive animated bounceIn" 
+  <div
+    class="interactive animated bounceIn"
     v-for="(site, index) in list" 
     :v-if="list.length > 0 || site.name"
     :key="index"
@@ -114,6 +114,7 @@ export default {
       })
     },
     funClose(name){
+      this.activeName = ''
       let list = this.list
       this.list = list.filter((s)=>{
         if(s.name === name){

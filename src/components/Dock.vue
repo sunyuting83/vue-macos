@@ -125,7 +125,7 @@ export default {
   },
   watch: {
     closeActive(val) {
-      console.log(val)
+      // console.log(val)
       this.list = this.list.map((x) => {
         if(x.fun == val) {
           x.active = false
