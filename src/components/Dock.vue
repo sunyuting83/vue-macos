@@ -194,14 +194,14 @@ export default {
   transform-origin: 40% 70%;
 }
 #container li i{
-  width: 12%;
+  width: 8%;
   height: 3px;
   background: #333;
   display: block;
   margin: 0 auto;
   position: absolute;
   bottom: 0px;
-  left: 45%;
+  left: 48%;
 }
 
 #container li:hover img {
@@ -221,13 +221,25 @@ export default {
   bottom: 110px;
   left: 0;
   width: 100%;
-  background-color: #222;
+  background:rgba(255,255,255,.65);
   padding: 0.25rem 0;
-  border-radius: 0.4375rem;
+  border-radius: 0.25rem;
+}
+
+#container li span:after{
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 46%;
+  width: 0; 
+  height: 0;
+  border-width: 6px;
+  border-style: solid;
+  border-color:rgba(255,255,255,.65) transparent transparent transparent;
 }
 
 #container li:hover span {
   display: block;
-  color: #fff;
+  color: #000;
 }
 </style>
