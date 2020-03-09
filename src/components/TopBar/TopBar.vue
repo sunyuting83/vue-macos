@@ -2,7 +2,13 @@
   <div class="topbar">
     <div class="bar-item">
       <div><i class="fa fa-apple apple"></i></div>
-      <div>软件</div>
+      <div>{{setMenu.name}}</div>
+      <div v-for="(item,i) in setMenu.toolbar" :key="i" class="menu">
+        {{item.title}}
+        <div v-if="item.child.length > 0" class="menus">
+          <div v-for="(it,i) in item.child" :key="i" @click.stop="menuFun(it.fun, it.param)">{{it.title}}</div>
+        </div>
+      </div>
     </div>
     <div class="bar-item">
       <div><i class="fa fa-wifi"></i></div>
@@ -20,7 +26,7 @@
 import DataTime from './DateTime'
 export default {
   name: 'TopBar',
-  props: ['shCalender'],
+  props: ['shCalender', 'setMenu', 'menuFun'],
   components: {
     DataTime
   },
@@ -66,5 +72,37 @@ export default {
 .bar-item > div {
   cursor: pointer;
   margin-left: 1rem
+}
+.menu {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+}
+.menu:hover {
+  background:#0e6de1;
+  color:#fff
+}
+.menu:hover .menus {
+  display: block;
+}
+.menus {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 150px;
+  text-align: left;
+  background: rgba(255,255,255,.85);
+  border-radius: 0 0 0.275rem 0.275rem;
+  display: none;
+  color:#000
+}
+.menus > div {
+  padding: 5px;
+  padding-left: 10px;
+}
+.menus > div:hover {
+  background:#0e6de1;
+  color:#fff
 }
 </style>

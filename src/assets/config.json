@@ -56,7 +56,8 @@
       "oldheight":480,
       "full":false,
       "oldtop":40,
-      "oldleft":40
+      "oldleft":40,
+      "start": true
     }
   },
   "dock": {

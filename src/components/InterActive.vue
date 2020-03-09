@@ -1,9 +1,10 @@
 <template>
 <div>
   <div
-    class="interactive animated bounceIn"
+    class="interactive animated"
+    :class="site.start?'bounceIn':''"
     v-for="(site, index) in list" 
-    :v-if="list.length > 0 || site.name"
+    :v-if="list.length > 0"
     :key="index"
     :style="[
       {'top':site.top + 'px'},
@@ -22,7 +23,7 @@
       @mousedown="move($event, index)"
       >
       <div class="dragFun">
-        <div class="dragClose" @click.stop="funClose(site.name),closeFun(site.name)">
+        <div class="dragClose" @click.stop="closeFun(site.name)">
           <span>
             <i class="fa fa-times"></i>
           </span>
@@ -102,16 +103,18 @@ export default {
     },
     setActive(i) {
       let list = this.list
-      this.list = list.map((element,x) =>{
-        if(x == i) {
-          element.active = true
-          element.zIndex = 999
-        }else {
-          element.active = false
-          element.zIndex = 'inherit'
-        }
-        return element
-      })
+      if (!list[i].active) {
+        this.list = list.map((element,x) =>{
+          if(x == i) {
+            element.active = true
+            element.zIndex = 999
+          }else {
+            element.active = false
+            element.zIndex = 'inherit'
+          }
+          return element
+        })
+      }
     },
     funClose(name){
       this.activeName = ''
